@@ -1,0 +1,26 @@
+@import "../style/_config";
+
+.navbarStyle {
+  margin-top: 1.5rem;
+  text-decoration: none;
+
+  :hover {
+    text-decoration: none;
+  }
+}
+
+.biggerNavElement {
+  font-family: $headings-font-family;
+  font-size: 4rem;
+  color: mediumseagreen;
+
+  :hover {
+    color: mediumseagreen;
+  }
+}
+
+.smallNavElement {
+  font-family: $font-family-base;
+  font-size: 1rem;
+  color: lightseagreen;
+}
