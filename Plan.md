@@ -30,8 +30,8 @@ Maybe make seperate component for it
 [x] create-react-app
 [x] make a component
 [x] import component and use it
-[] hardcode recipes as inital state
-[] display the recipes, map --> JSX
+[x] hardcode recipes as inital state
+[x] display the recipes, map --> JSX
 
 ### Story
 
