@@ -5,8 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function RecipeCard(props) {
-  const thumbsUp = <FontAwesomeIcon icon={faThumbsUp} size="m" />;
-  const thumbsDown = <FontAwesomeIcon icon={faThumbsDown} size="m" />;
+  const thumbsUp = <FontAwesomeIcon icon={faThumbsUp} size="xs" />;
+  const thumbsDown = <FontAwesomeIcon icon={faThumbsDown} size="xs" />;
+
+  const onClickIncrement = () => {
+    props.incrementLikes(props.id);
+    console.log(props.id);
+  };
 
   return (
     <div className="container">
@@ -20,7 +25,7 @@ export default function RecipeCard(props) {
           </a>
         </div>
         <div className="ratingButtons">
-          <button className="btn btn-success">
+          <button onClick={onClickIncrement} className="btn btn-success">
             {thumbsUp} {props.likes}
           </button>
           <button className="btn btn-danger">

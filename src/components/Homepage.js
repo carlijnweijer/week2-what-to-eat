@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddRecipeForm from "./AddRecipeForm";
 import RecipeCard from "./RecipeCard";
+import "./Homepage.scss";
 
 function compare_likes(recipe_a, recipe_b) {
   return recipe_b.likes - recipe_a.likes;
@@ -54,23 +55,41 @@ export default function Homepage() {
 
   const recipes_sorted = [...recipes].sort(compare_likes);
 
-  return (
-    <div className="container">
-      <h1>Feed</h1>
-      <AddRecipeForm />
+  const incrementLikes = (id) => {
+    console.log(id);
+    const new_recipes_array = recipes.map((recipe) => {
+      if (recipe.id === id) {
+        return {
+          ...recipe,
+          likes: recipe.likes + 1,
+        };
+      } else {
+        return recipe;
+      }
+    });
+    setRecipes(new_recipes_array);
+  };
 
-      {recipes_sorted.map(function (recipe) {
-        return (
-          <RecipeCard
-            title={recipe.title}
-            cooktime={recipe.cooktime}
-            img={recipe.img}
-            link={recipe.link}
-            likes={recipe.likes}
-            dislikes={recipe.dislikes}
-          />
-        );
-      })}
+  return (
+    <div className="container-fluid">
+      <h3>What did you cook tonight?</h3>
+      <AddRecipeForm />
+      <div className="card-columns">
+        {recipes_sorted.map(function (recipe) {
+          return (
+            <RecipeCard
+              id={recipe.id}
+              title={recipe.title}
+              cooktime={recipe.cooktime}
+              img={recipe.img}
+              link={recipe.link}
+              likes={recipe.likes}
+              dislikes={recipe.dislikes}
+              incrementLikes={incrementLikes}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
